@@ -20,8 +20,23 @@ public class GradeServiceImpl implements GradeService {
 
     }
 
+
     @Override
     public String getGrade(double midtermScore, double finalScore) {
-        return null;
+        String g ="";
+        double sum = midtermScore+ finalScore;
+        if (sum >= 80) {
+            g= "A";
+        } else if (sum >= 75 && sum < 80) {
+            g= "B";
+        } else if (sum >= 60 && sum < 75) {
+            g= "C";
+        } else if (sum >= 33 && sum < 60) {
+            g= "D";
+        }else if (sum < 33) {
+            g="F";
+        }
+        return g;
+
     }
 }

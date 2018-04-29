@@ -26,7 +26,7 @@ public class GradeServiceImplTest {
         assertThat(gradeService.getGrade(0),is("F"));
     }
 
-    public Object paramsForTestGetGradeParams(){
+    public Object paramsForTestGetGradeParams0(){
         return new Object[][]{
                 {100,"A"},
                 {77,"B"}
@@ -34,12 +34,48 @@ public class GradeServiceImplTest {
     }
 
     @Test
-    @Parameters(method = "paramsForTestGetGradeParams")
+    @Parameters(method = "paramsForTestGetGradeParams0")
     @TestCaseName("Test getGrade Params [{index}] : input is {0}, expect \"{1}\"")
     public void testGetGradeparams(double score,String expectedGrade){
         GradeServiceImpl gradeService = new GradeServiceImpl();
         assertThat(gradeService.getGrade(score),is(expectedGrade));
     }
+    public Object paramsForTestGetGradeParams(){
+        return new Object[][]{
+                {100,"A"},
+                {77,"B"},
+                {60,"C"},
+                {55,"D"},
+                {30,"F"}
+        };
+    }
+
+    @Test
+    @Parameters(method = "paramsForTestGetGradeParams")
+    @TestCaseName("Test getGrade Params [{index}] : input is {0}, expect \"{1}\"")
+    public void testGetGradeparams0(double score,String expectedGrade){
+        GradeServiceImpl gradeService = new GradeServiceImpl();
+        assertThat(gradeService.getGrade(score),is(expectedGrade));
+    }
+
+    public Object paramsForTestGetGradeParams2(){
+        return new Object[][]{
+                {40,40,"A"},
+                {40,37,"B"},
+                {30,30,"C"},
+                {20,35,"D"},
+                {10,20,"F"}
+        };
+    }
+    @Test
+    @Parameters(method = "paramsForTestGetGradeParams2")
+    @TestCaseName("Test getGrade Params 2 [{index}] : input is {0}, expect \"{1}\"")
+    public void testGetGradeparams2(double midtermScore,double finalScore,String expectedGrade){
+        GradeServiceImpl gradeService = new GradeServiceImpl();
+        assertThat(gradeService.getGrade(midtermScore,finalScore),is(expectedGrade));
+    }
+
+
 
 
 
